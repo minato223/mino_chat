@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:mino_chat/constants/app_colors.dart';
 import 'package:mino_chat/constants/app_images.dart';
 import 'package:mino_chat/constants/app_sizes.dart';
+import 'package:mino_chat/views/widgets/app_custom_clipper.dart';
 import 'package:mino_chat/views/widgets/xspace.dart';
 
 class Landscape extends StatelessWidget {
@@ -22,7 +23,7 @@ class Landscape extends StatelessWidget {
             color: AppColors.primary,
           ),
           ClipPath(
-            clipper: MyClipper(),
+            clipper: AppCustomClipper(clipHeight: (size.HEIGHT * .65 / 3)),
             child: Container(
               height: size.HEIGHT * .65,
               width: size.WIDTH,
@@ -96,27 +97,5 @@ class Landscape extends StatelessWidget {
         ],
       ),
     );
-  }
-}
-
-class MyClipper extends CustomClipper<Path> {
-  @override
-  getClip(Size size) {
-    double x = size.width;
-    double y = size.height;
-    double center = (5 / 6) * y;
-    Path path = Path()
-      ..lineTo(0, y)
-      ..quadraticBezierTo(0, center, x * .3, center)
-      ..lineTo(x * .7, center)
-      ..quadraticBezierTo(x, center, x, (4 / 6) * y)
-      ..lineTo(x, 0)
-      ..close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(covariant CustomClipper oldClipper) {
-    return false;
   }
 }
