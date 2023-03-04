@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mino_chat/themes/theme_provider.dart';
+import 'package:mino_chat/views/home/chats/chats_detail.dart';
 import 'package:mino_chat/views/home/home.dart';
 import 'package:mino_chat/views/landscape/landscape.dart';
 
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Mino Chat',
       theme: ThemeProvider.light,
-      home: const Home(),
+      home: const ChatsDetail(),
     );
   }
 }

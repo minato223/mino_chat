@@ -36,16 +36,16 @@ class AvatarWithBadge extends StatelessWidget {
         children: [
           Container(
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(20),
                 color:
                     backgroundColor ?? const Color.fromARGB(122, 247, 56, 46)),
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: Image.asset(
-              imagePath ?? AppImages.avatar1,
-              width: width * .9,
-            ),
+            child: ClipRRect(
+                borderRadius: BorderRadius.circular(15),
+                child: Image.asset(imagePath ?? AppImages.avatar1,
+                    width: width * .9)),
           ),
           (badgeValue != null && badgeValue! > 0)
               ? Align(
