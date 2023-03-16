@@ -1,6 +1,12 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:mino_chat/constants/app_colors.dart';
 import 'package:mino_chat/constants/app_sizes.dart';
+import 'package:mino_chat/fixtures/user_fixtures.dart';
+import 'package:mino_chat/models/user.dart';
+import 'package:mino_chat/views/home/common/status_tile.dart';
+import 'package:mino_chat/views/widgets/app_animated_list_view.dart';
 import 'package:mino_chat/views/widgets/app_list_tile.dart';
 import 'package:mino_chat/views/widgets/app_text.dart';
 import 'package:mino_chat/views/widgets/avatar_with_badge.dart';
@@ -14,10 +20,9 @@ class Status extends StatelessWidget {
     ThemeData theme = Theme.of(context);
     AppSizes size = AppSizes(context);
     return Scaffold(
-      body: ListView(
-        physics: const BouncingScrollPhysics(),
-        padding: EdgeInsets.all(size.CONTENT_SPACE),
-        children: [
+      body: AppAnimatedListView(
+        animationStart: AppAnimationStart.bottom,
+        widgets: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -29,16 +34,9 @@ class Status extends StatelessWidget {
             ],
           ),
           XSpace(size.CONTENT_SPACE).y,
-          AppListTile(
-            leading: AvatarWithBadge(
-              width: size.WIDTH * .15,
-              addbutton: true,
-            ),
-            subtitle: "Tap to add status",
-            trailing: AppText(
-              text: "2:03",
-              level: 2,
-            ),
+          StatusTile(
+            user: UserFixtures.allUser[1],
+            isCurrentUser: true,
           ),
           XSpace(size.CONTENT_SPACE * .2).y,
           Text(
@@ -48,16 +46,8 @@ class Status extends StatelessWidget {
           ),
           XSpace(size.CONTENT_SPACE * 1.5).y,
           Column(
-            children: List.generate(
-                5,
-                (index) => AppListTile(
-                      leading: AvatarWithBadge(width: size.WIDTH * .15),
-                      subtitle: "25 minutes ago",
-                      trailing: AppText(
-                        text: "2:03",
-                        level: 2,
-                      ),
-                    )),
+            children: List.generate(UserFixtures.allUser.length - 3,
+                (index) => StatusTile(user: UserFixtures.allUser[index + 3])),
           ),
         ],
       ),

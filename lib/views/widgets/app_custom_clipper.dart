@@ -14,8 +14,8 @@ class AppCustomClipper extends CustomClipper<Path> {
     if (isReverse) {
       path
         ..lineTo(0, y - clipHeight)
-        ..quadraticBezierTo(0, center, x * .25, center)
-        ..lineTo(x * .75, center)
+        ..quadraticBezierTo(0, center, x * .2, center)
+        ..lineTo(x * .8, center)
         ..quadraticBezierTo(x, center, x, y)
         ..lineTo(x, 0)
         ..close();
@@ -23,8 +23,8 @@ class AppCustomClipper extends CustomClipper<Path> {
     }
     path
       ..lineTo(0, y)
-      ..quadraticBezierTo(0, center, x * .25, center)
-      ..lineTo(x * .75, center)
+      ..quadraticBezierTo(0, center, x * .2, center)
+      ..lineTo(x * .8, center)
       ..quadraticBezierTo(x, center, x, y - clipHeight)
       ..lineTo(x, 0)
       ..close();

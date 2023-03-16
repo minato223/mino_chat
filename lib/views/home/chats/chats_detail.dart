@@ -1,21 +1,26 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mino_chat/constants/app_colors.dart';
-import 'package:mino_chat/constants/app_icons.dart';
 import 'package:mino_chat/constants/app_images.dart';
 import 'package:mino_chat/constants/app_sizes.dart';
 import 'package:mino_chat/constants/app_typography.dart';
+import 'package:mino_chat/models/user.dart';
 import 'package:mino_chat/views/home/chats/models/bottom_action_menu.dart';
 import 'package:mino_chat/views/widgets/app_custom_clipper.dart';
-import 'package:mino_chat/views/widgets/app_icon.dart';
 import 'package:mino_chat/views/widgets/app_list_tile.dart';
 import 'package:mino_chat/views/widgets/app_text.dart';
 import 'package:mino_chat/views/widgets/avatar_with_badge.dart';
 import 'package:mino_chat/views/widgets/xspace.dart';
 
-class ChatsDetail extends StatelessWidget {
-  const ChatsDetail({super.key});
+class ChatsDetail extends StatefulWidget {
+  const ChatsDetail({super.key, required this.user});
+  final User user;
 
+  @override
+  State<ChatsDetail> createState() => _ChatsDetailState();
+}
+
+class _ChatsDetailState extends State<ChatsDetail> {
   @override
   Widget build(BuildContext context) {
     List<BottomActionMenu> actions = [
@@ -27,10 +32,14 @@ class ChatsDetail extends StatelessWidget {
     AppSizes size = AppSizes(context);
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(
-          Icons.arrow_back_ios_new_rounded,
-          size: 20,
-        ),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(
+              Icons.arrow_back_ios_new_rounded,
+              size: 20,
+            )),
         elevation: 0,
       ),
       body: Stack(
@@ -55,27 +64,31 @@ class ChatsDetail extends StatelessWidget {
                     padding: EdgeInsets.all(size.CONTENT_SPACE),
                     child: Column(
                       children: [
-                        AppListTile(
-                          leading: AvatarWithBadge(
-                            width: size.WIDTH * .15,
-                            imagePath: AppImages.avatar4,
-                          ),
-                          subtitle: "Tap to add status",
-                          trailing: Row(
-                            children: [
-                              IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(
-                                    CupertinoIcons.videocam,
-                                    color: Colors.black45,
-                                    size: size.CONTENT_SPACE * 2.5,
-                                  )),
-                              IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(Icons.call_outlined,
+                        Hero(
+                          tag: widget.user.profil,
+                          child: AppListTile(
+                            title: widget.user.username,
+                            leading: AvatarWithBadge(
+                              width: size.WIDTH * .15,
+                              imagePath: widget.user.profil,
+                            ),
+                            subtitle: "Tap to add status",
+                            trailing: Row(
+                              children: [
+                                IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(
+                                      CupertinoIcons.videocam,
                                       color: Colors.black45,
-                                      size: size.CONTENT_SPACE * 1.6))
-                            ],
+                                      size: size.CONTENT_SPACE * 2.5,
+                                    )),
+                                IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(Icons.call_outlined,
+                                        color: Colors.black45,
+                                        size: size.CONTENT_SPACE * 1.6))
+                              ],
+                            ),
                           ),
                         ),
                         Expanded(

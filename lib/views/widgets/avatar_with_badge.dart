@@ -30,7 +30,7 @@ class AvatarWithBadge extends StatelessWidget {
     ThemeData theme = Theme.of(context);
     return SizedBox(
       width: width,
-      height: height,
+      height: width,
       child: Stack(
         clipBehavior: Clip.none,
         children: [
