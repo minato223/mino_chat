@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mino_chat/themes/theme_provider.dart';
 import 'package:mino_chat/views/landscape/landscape.dart';
+import 'package:mino_chat/views/profile/profile.dart';
 
 void main() {
   runApp(const MyApp());

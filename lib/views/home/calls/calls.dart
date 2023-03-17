@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mino_chat/constants/app_colors.dart';
 import 'package:mino_chat/constants/app_sizes.dart';
-import 'package:mino_chat/fixtures/user_fixtures.dart';
 import 'package:mino_chat/views/calls/incoming_call.dart';
 import 'package:mino_chat/views/home/common/call_tile.dart';
 import 'package:mino_chat/views/home/common/see_more.dart';
 import 'package:mino_chat/views/widgets/app_animated_list_view.dart';
-import 'package:mino_chat/views/widgets/app_list_tile.dart';
 import 'package:mino_chat/views/widgets/app_text.dart';
-import 'package:mino_chat/views/widgets/avatar_with_badge.dart';
 import 'package:mino_chat/views/widgets/xspace.dart';
 import 'package:mino_chat/tools/extensions/context_ext.dart';
 

@@ -8,9 +8,11 @@ import 'package:mino_chat/views/home/chats/chats.dart';
 import 'package:mino_chat/views/home/common/translate_animation.dart';
 import 'package:mino_chat/views/home/models/page_model.dart';
 import 'package:mino_chat/views/home/status/status.dart';
+import 'package:mino_chat/views/profile/profile.dart';
 import 'package:mino_chat/views/widgets/app_custom_clipper.dart';
 import 'package:mino_chat/views/widgets/app_text.dart';
 import 'package:mino_chat/views/widgets/xspace.dart';
+import 'package:mino_chat/tools/extensions/context_ext.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -29,7 +31,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
     _controller = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 2000));
+        vsync: this, duration: const Duration(milliseconds: 1500));
     _homeAnimation = HomeAnimation(_controller);
     pages = [
       PageModel(page: const Chats(), title: "Chats"),
@@ -142,9 +144,11 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                   _homeAnimation.searchAnimation.value,
                               offsetY: HomeAnimation.offsetY,
                               child: IconButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    context.pushRoute(const Profile());
+                                  },
                                   icon: const Icon(
-                                    CupertinoIcons.search,
+                                    CupertinoIcons.person_crop_circle,
                                     color: Colors.white,
                                   ))),
                         ],

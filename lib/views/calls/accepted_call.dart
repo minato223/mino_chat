@@ -71,7 +71,7 @@ class _AcceptedCallState extends State<AcceptedCall> {
                             child: Hero(tag: widget.user, child: widget.user)),
                         XSpace(size.CONTENT_SPACE).y,
                         AppText(
-                          text: "All Calls",
+                          text: "John Doe",
                           level: 1,
                         ),
                         XSpace(size.CONTENT_SPACE).y,

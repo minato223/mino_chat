@@ -116,40 +116,36 @@ class _LandscapeState extends State<Landscape>
                                         context.pushRoute(const Home(),
                                             replacement: true);
                                       },
-                                      child: Hero(
-                                          tag: "startButton",
-                                          child: Container(
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal:
-                                                    size.CONTENT_SPACE * 1.7,
-                                                vertical:
-                                                    size.CONTENT_SPACE * 1.2),
-                                            decoration: BoxDecoration(
-                                                color: AppColors.secondary,
-                                                borderRadius:
-                                                    BorderRadius.circular(15)),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                Text(
-                                                  "Let's Start",
-                                                  textAlign: TextAlign.center,
-                                                  style: theme
-                                                      .textTheme.titleMedium!
-                                                      .copyWith(
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                          color: Colors.white),
-                                                ),
-                                                XSpace(size.CONTENT_SPACE / 2)
-                                                    .x,
-                                                const Icon(
-                                                  Icons.arrow_forward_rounded,
-                                                  color: Colors.white,
-                                                )
-                                              ],
+                                      child: Container(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal:
+                                                size.CONTENT_SPACE * 1.7,
+                                            vertical: size.CONTENT_SPACE * 1.2),
+                                        decoration: BoxDecoration(
+                                            color: AppColors.secondary,
+                                            borderRadius:
+                                                BorderRadius.circular(15)),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Text(
+                                              "Let's Start",
+                                              textAlign: TextAlign.center,
+                                              style: theme
+                                                  .textTheme.titleMedium!
+                                                  .copyWith(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      color: Colors.white),
                                             ),
-                                          )),
+                                            XSpace(size.CONTENT_SPACE / 2).x,
+                                            const Icon(
+                                              Icons.arrow_forward_rounded,
+                                              color: Colors.white,
+                                            )
+                                          ],
+                                        ),
+                                      ),
                                     ))
                               ],
                             ),

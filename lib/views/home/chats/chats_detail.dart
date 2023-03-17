@@ -30,13 +30,14 @@ class _ChatsDetailState extends State<ChatsDetail> {
       BottomActionMenu(icon: Icons.location_on_outlined, color: Colors.orange),
     ];
     AppSizes size = AppSizes(context);
+    bool isKeyboardOpen = MediaQuery.of(context).viewInsets.bottom == 0;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_ios_new_rounded,
               size: 20,
             )),
@@ -48,7 +49,8 @@ class _ChatsDetailState extends State<ChatsDetail> {
             color: AppColors.primary,
           ),
           ClipPath(
-            clipper: AppCustomClipper(clipHeight: (size.HEIGHT * .65 / 3)),
+            clipper: AppCustomClipper(
+                clipHeight: (size.HEIGHT * .65 / 3) * (isKeyboardOpen ? 1 : 0)),
             child: Container(
               color: Colors.white,
             ),
@@ -64,31 +66,28 @@ class _ChatsDetailState extends State<ChatsDetail> {
                     padding: EdgeInsets.all(size.CONTENT_SPACE),
                     child: Column(
                       children: [
-                        Hero(
-                          tag: widget.user.profil,
-                          child: AppListTile(
-                            title: widget.user.username,
-                            leading: AvatarWithBadge(
-                              width: size.WIDTH * .15,
-                              imagePath: widget.user.profil,
-                            ),
-                            subtitle: "Tap to add status",
-                            trailing: Row(
-                              children: [
-                                IconButton(
-                                    onPressed: () {},
-                                    icon: Icon(
-                                      CupertinoIcons.videocam,
+                        AppListTile(
+                          title: widget.user.username,
+                          leading: AvatarWithBadge(
+                            width: size.WIDTH * .15,
+                            imagePath: widget.user.profil,
+                          ),
+                          subtitle: "Tap to add status",
+                          trailing: Row(
+                            children: [
+                              IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(
+                                    CupertinoIcons.videocam,
+                                    color: Colors.black45,
+                                    size: size.CONTENT_SPACE * 2.5,
+                                  )),
+                              IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(Icons.call_outlined,
                                       color: Colors.black45,
-                                      size: size.CONTENT_SPACE * 2.5,
-                                    )),
-                                IconButton(
-                                    onPressed: () {},
-                                    icon: Icon(Icons.call_outlined,
-                                        color: Colors.black45,
-                                        size: size.CONTENT_SPACE * 1.6))
-                              ],
-                            ),
+                                      size: size.CONTENT_SPACE * 1.6))
+                            ],
                           ),
                         ),
                         Expanded(
@@ -157,30 +156,41 @@ class _ChatsDetailState extends State<ChatsDetail> {
                   ),
                 ),
                 Expanded(
-                    flex: 1,
-                    child: SizedBox(
-                      width: size.WIDTH * .8,
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: actions
-                              .map((action) => GestureDetector(
-                                    onTap: action.onclick,
-                                    child: Container(
-                                      padding: EdgeInsets.all(
-                                          size.CONTENT_SPACE * .7),
-                                      decoration: BoxDecoration(
-                                          color: action.color,
-                                          borderRadius:
-                                              BorderRadius.circular(15)),
-                                      child: Icon(
-                                        action.icon,
-                                        size: 30,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ))
-                              .toList()),
-                    )),
+                    flex: !isKeyboardOpen ? 0 : 1,
+                    child: AnimatedCrossFade(
+                        excludeBottomFocus: true,
+                        firstChild: SizedBox(
+                          width: size.WIDTH * .8,
+                          child: Container(
+                            margin: EdgeInsets.only(top: size.CONTENT_SPACE),
+                            child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: actions
+                                    .map((action) => GestureDetector(
+                                          onTap: action.onclick,
+                                          child: Container(
+                                            padding: EdgeInsets.all(
+                                                size.CONTENT_SPACE * .7),
+                                            decoration: BoxDecoration(
+                                                color: action.color,
+                                                borderRadius:
+                                                    BorderRadius.circular(15)),
+                                            child: Icon(
+                                              action.icon,
+                                              size: 30,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ))
+                                    .toList()),
+                          ),
+                        ),
+                        secondChild: const SizedBox(),
+                        crossFadeState: isKeyboardOpen
+                            ? CrossFadeState.showFirst
+                            : CrossFadeState.showSecond,
+                        duration: const Duration(milliseconds: 100))),
               ],
             ),
           )
