@@ -1,16 +1,10 @@
-# mino_chat
+# Mino Chat
 
-A new Flutter project.
+Intégration de l'interface utilisateur d'une application de chat développée avec Flutter ❤️
 
-## Getting Started
+Si vous avez aimé, veuillez montrer votre appréciation en donnant une étoile sur le référentiel GitHub 🚀.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+#### 🔥 Code source : https://github.com/minato223/mino_chat
+#### ⛹️ UI Link: https://www.instagram.com/p/CZPbDZGvfWR
+#### 👨‍💻 Contact for work: https://www.linkedin.com/in/lamine-diarra-a46504196/
+![Mino Chat](https://cdn.dribbble.com/userupload/4214233/file/original-a4c80caf8bc6bcccd9ff44fc43c4f41d.png)
