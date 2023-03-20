@@ -7,4 +7,4 @@ Si vous avez aimé, veuillez montrer votre appréciation en donnant une étoile 
 #### 🔥 Code source : https://github.com/minato223/mino_chat
 #### ⛹️ UI Link: https://www.instagram.com/p/CZPbDZGvfWR
 #### 👨‍💻 Contact for work: https://www.linkedin.com/in/lamine-diarra-a46504196/
-![Mino Chat](https://cdn.dribbble.com/userupload/4214233/file/original-a4c80caf8bc6bcccd9ff44fc43c4f41d.png)
+![Mino Chat](https://raw.githubusercontent.com/minato223/mino_chat/4758c64572c9f89706a7aab80bd8e317461a8cca/chat.jpg?token=AQ6OUFSA5HRCBPOUJNOB7LLEDA2GU)
